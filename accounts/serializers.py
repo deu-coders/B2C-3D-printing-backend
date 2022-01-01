@@ -5,6 +5,12 @@ from dj_rest_auth.serializers import UserDetailsSerializer
 
 from .models import CustomUser
 
+from dj_rest_auth.serializers import PasswordResetSerializer
+from allauth.account.forms import ResetPasswordForm
+
+class CustomPasswordResetSerializer(PasswordResetSerializer):
+    password_reset_form_class = ResetPasswordForm
+
 # https://velog.io/@ready2start/DRF-djrestauth%EB%A1%9C-%EC%BB%A4%EC%8A%A4%ED%85%80-%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0
 class CustomRegisterSerializer(RegisterSerializer):
     # 기본 설정 필드: username, password, email
