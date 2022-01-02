@@ -91,3 +91,8 @@ db.sqlite3
 
 # media files
 /media/
+
+migrations/
+!migrations/__init__.py
+
+sqlite3.exe
