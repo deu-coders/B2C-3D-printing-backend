@@ -32,6 +32,7 @@ INSTALLED_APPS = [
 
     #myapp
     'accounts',
+    'printers',
     #django-rest-auth
     'rest_framework',
     'rest_framework_simplejwt.token_blacklist',
@@ -45,7 +46,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     # Other apps
     "phonenumber_field",
-    
+
 ]
 
 MIDDLEWARE = [

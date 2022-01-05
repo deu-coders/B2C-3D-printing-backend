@@ -14,5 +14,6 @@ urlpatterns = [
     # https://hwan-hobby.tistory.com/91
     re_path(r'^account/', include('allauth.urls')),
     re_path(r'^admin/', admin.site.urls),
+    re_path(r'', include('printers.urls')),
 ]
 
