@@ -25,7 +25,6 @@ class RequestmentViewSet(viewsets.ModelViewSet):
 
 class VideoCamera(object):
     def __init__(self,video_id):
-        print(video_id)
         self.video = cv2.VideoCapture(video_id)
         (self.grabbed, self.frame) = self.video.read()
         threading.Thread(target=self.update, args=()).start()

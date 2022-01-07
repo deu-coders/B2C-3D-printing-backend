@@ -2,6 +2,9 @@ from django.urls import re_path, path, include
 from django.contrib import admin
 from django.views.generic import RedirectView, TemplateView
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 # https://github.com/iMerica/dj-rest-auth/blob/master/demo/demo/urls.py
 # https://korinkorin.tistory.com/57
 # https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FUaOs0%2Fbtq5GdHOhYO%2FKFv5dCKNNr5MbmuSUT1KB0%2Fimg.png
@@ -15,5 +18,8 @@ urlpatterns = [
     re_path(r'^account/', include('allauth.urls')),
     re_path(r'^admin/', admin.site.urls),
     re_path(r'', include('printers.urls')),
+
+    # media url
+    *static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT),
 ]
 
