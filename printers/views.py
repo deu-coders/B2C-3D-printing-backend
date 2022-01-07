@@ -9,6 +9,9 @@ from django.http import StreamingHttpResponse
 import cv2
 import threading
 
+
+from rest_framework.response import Response
+
 # Create your views here.
 class PrinterViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Printer.objects.all()
@@ -22,6 +25,10 @@ class RequestmentViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
+
+    def get_queryset(self):
+        user = self.request.user
+        return Requestment.objects.filter(author=user)
 
 class VideoCamera(object):
     def __init__(self,video_id):
