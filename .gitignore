@@ -99,3 +99,5 @@ sqlite3.exe
 
 .venv
 venv
+
+mariadb/
