@@ -1,6 +1,8 @@
 from allauth.account.adapter import DefaultAccountAdapter
 
 # https://stackoverflow.com/questions/37841612/django-rest-auth-custom-registration-fails-to-save-extra-fields
+
+
 class CustomAccountAdapter(DefaultAccountAdapter):
     def save_user(self, request, user, form, commit=True):
         """

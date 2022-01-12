@@ -10,6 +10,8 @@ import cv2
 import threading
 
 # Create your views here.
+
+
 class PrinterViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Printer.objects.all()
     serializer_class = PrinterSerializer
@@ -19,7 +21,7 @@ class RequestmentViewSet(viewsets.ModelViewSet):
     queryset = Requestment.objects.all()
     serializer_class = RequestmentSerializer
     permission_classes = [IsAuthor]
-    http_method_names = ['get','put','delete']
+    http_method_names = ['post', 'get', 'put', 'delete']
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
@@ -29,12 +31,9 @@ class RequestmentViewSet(viewsets.ModelViewSet):
         user = self.request.user
         return Requestment.objects.filter(author=user)
 
-    
 
-    
-    
 class VideoCamera(object):
-    def __init__(self,video_id):
+    def __init__(self, video_id):
         self.video = cv2.VideoCapture(video_id)
         (self.grabbed, self.frame) = self.video.read()
         threading.Thread(target=self.update, args=()).start()
@@ -60,7 +59,7 @@ def gen(camera):
 
 
 @gzip.gzip_page
-def VideoViewSet(request,video_id):
+def VideoViewSet(request, video_id):
     try:
         cam = VideoCamera(video_id)
         return StreamingHttpResponse(gen(cam), content_type="multipart/x-mixed-replace;boundary=frame")

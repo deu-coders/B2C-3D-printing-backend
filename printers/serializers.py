@@ -14,4 +14,3 @@ class RequestmentSerializer(serializers.ModelSerializer):
         model = Requestment
         fields = '__all__'
         read_only_fields = ['author', 'state']
-

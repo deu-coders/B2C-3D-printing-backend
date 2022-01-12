@@ -1,16 +1,16 @@
 # backend/management/commands/initgroups.py
 # https://nadure.tistory.com/20
 
-from django.core.management import BaseCommand
-from django.contrib.auth.models import Group, Permission
-
 from accounts import models
+from django.contrib.auth.models import Group, Permission
+from django.core.management import BaseCommand
 
 GROUPS_PERMISSIONS = {
     'ConnectionAdmins': {
-        models.CustomUser : ['add', 'change', 'delete', 'view'],
+        models.CustomUser: ['add', 'change', 'delete', 'view'],
     },
 }
+
 
 class Command(BaseCommand):
     def __init__(self, *args, **kwargs):
