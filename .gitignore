@@ -96,3 +96,6 @@ migrations/
 !migrations/__init__.py
 
 sqlite3.exe
+
+.venv
+venv
