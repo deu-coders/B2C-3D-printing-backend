@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     # Other apps
     "phonenumber_field",
     'allauth.socialaccount',
+    'django_crontab',
 
 ]
 
@@ -56,7 +57,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -191,7 +192,7 @@ REST_AUTH_SERIALIZERS = {
 REST_USE_JWT = True
 
 
-# access token, refresh token 만료 기간 설정
+# access token, refresh token 만료 기간
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': datetime.timedelta(hours=2),
     'REFRESH_TOKEN_LIFETIME': datetime.timedelta(days=7),
@@ -213,3 +214,8 @@ ACCOUNT_ADAPTER = 'accounts.adapters.CustomAccountAdapter'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# https://ugaemi.github.io/django/Django-crontab/
+CRONJOBS = [
+    ('*/1 * * * *', 'B2C_3D_printing.cron.crawling_printers', '>> schedule.log'),
+]

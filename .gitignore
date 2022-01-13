@@ -101,3 +101,6 @@ sqlite3.exe
 venv
 
 mariadb/
+
+migrations/
+!migrations/__init__.py
